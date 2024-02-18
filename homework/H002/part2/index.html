@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Товары</h1>
+      <button @click="sortAsc">По возрастанию</button>
+      <button @click="sortDesc">По убыванию</button>
+      <button @click="unsort">По умолчанию</button>
+      <ul>
+        <li v-for="item in products" :key="item.id">
+          <div
+            style="border: 1px solid black; width: 400px; margin-bottom: 20px"
+          >
+            <h3>{{ item.productName }}</h3>
+            <p>{{ item.price }} $</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          products: [
+            {
+              id: 1,
+              productName: "Apple iPhone 14 256 GB",
+              price: 1100,
+            },
+            {
+              id: 2,
+              productName: "Apple iPhone 15 128 GB",
+              price: 1000,
+            },
+            {
+              id: 3,
+              productName: "Samsung Galaxy S24 Ultra 1TB",
+              price: 1800,
+            },
+            {
+              id: 4,
+              productName: "Xiaomi Mi 12 5G 128GB",
+              price: 450,
+            },
+            {
+              id: 5,
+              productName: "Sony PlayStation Digital Edition",
+              price: 500,
+            },
+            {
+              id: 6,
+              productName: "Lada Vesta Sedan",
+              price: 21000,
+            },
+            {
+              id: 7,
+              productName: "Tuborg Green",
+              price: 1,
+            },
+          ],
+        },
+        methods: {
+          sortAsc() {
+            this.products.sort((a, b) => a.price - b.price);
+          },
+          sortDesc() {
+            this.products.sort((a, b) => -(a.price - b.price));
+          },
+          unsort() {
+            location.reload();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
