@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .btn {
+            width: 35px;
+            height: 35px;
+        }
+
+        .like {
+            color: red;
+        }
+    </style>
+    <div id="app">
+        <article v-for="article in data" :key="article.id" class="article">
+            <h2 class="article__title">{{ article.title }}</h2>
+            <p class="article__text">{{ article.text }}</p>
+            <button class="btn" @click="likeToggle = !likeToggle" :class="{like: likeToggle}">Like</button>
+        </article>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                likeToggle: false,
+                data: [
+                    {
+                        title: 'title text',
+                        text: 'description text info element'
+                    },
+                    {
+                        title: 'title text 2',
+                        text: 'description text info element 2'
+                    },
+                    {
+                        title: 'title text 3',
+                        text: 'description text info element 3'
+                    },
+                    {
+                        title: 'title text 4',
+                        text: 'description text info element 4'
+                    },
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

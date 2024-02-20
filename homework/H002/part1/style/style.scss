@@ -218,7 +218,9 @@ a {
 }
 
 .blog {
-  padding-top: 95px;
+  &__block {
+    padding-top: 95px;
+  }
   &__descr {
     &_title {
       text-align: center;

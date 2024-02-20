@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./task1.js"></script>
+    <script src="./task2.js"></script> 
+    <script src="./task3.js"></script> 
+    <script src="./task4.js"></script> 
+
+    <div id="app">
+      <counter></counter>
+      <task-manager></task-manager>
+      <filter-comp></filter-comp>
+      <div>
+        <h2>Task 4. Simple Store</h2>
+        <button @click="sortByPrice('asc')">Сортировать по возрастанию цены</button>
+        <button @click="sortByPrice('desc')">Сортировать по убыванию цены</button>
+        <product v-for="product in sortedProducts" :key="product.id" :product="product"></product>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          products: [
+            {
+              id: 1,
+              productName: "Apple iPhone 14 256 GB",
+              price: 1100,
+            },
+            {
+              id: 2,
+              productName: "Apple iPhone 15 128 GB",
+              price: 1000,
+            },
+            {
+              id: 3,
+              productName: "Samsung Galaxy S24 Ultra 1TB",
+              price: 1800,
+            },
+            {
+              id: 4,
+              productName: "Xiaomi Mi 12 5G 128GB",
+              price: 450,
+            },
+            {
+              id: 5,
+              productName: "Sony PlayStation Digital Edition",
+              price: 500,
+            },
+            {
+              id: 6,
+              productName: "Lada Vesta Sedan",
+              price: 21000,
+            },
+            {
+              id: 7,
+              productName: "Tuborg Green",
+              price: 1,
+            },
+          ],
+          sortOrder: 'asc'
+        },
+        
+        computed: {
+        sortedProducts() {
+          return this.products.slice().sort((a, b) => {
+            if (this.sortOrder === 'asc') {
+              return a.price - b.price;
+            } else {
+              return b.price - a.price;
+            }
+          });
+        }
+      },
+      methods: {
+        sortByPrice(order) {
+          this.sortOrder = order;
+        }
+      }
+      });
+    </script>
+
+  </body>
+</html>
